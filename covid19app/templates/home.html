@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>covid_data</title>
+<p align="center"><u>India</u><br>Confirmed cases: {{ india_confirmed_cases }}<br> Recovered cases: {{ india_recovered_cases }}<br> Deceased cases: {{ india_death_cases }} 
+<form method="POST" align="center" style = "font-family:monospace; font-style:inherit; font-size:20px;">{% csrf_token %}
+Select a state: {{ context_form.state}} 
+
+<input type="submit" value="Get results"><br><br>
+
+<table class="table table-active " align="center">
+  <tbody>
+    <tr>
+      <td scope="row" class="=text-center">Confirmed cases in {{ answer }} - <br>Recovered cases in {{ answer }} - <br>Deaths in  {{ answer }} - </td>
+      <td scope="row" class="=text-center">{% for message in messages %} {{ message }}<br>{% endfor %}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+</form>
+
+{% endblock content%}
